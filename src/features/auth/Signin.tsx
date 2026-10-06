@@ -26,9 +26,12 @@ function Signin() {
             setOtp(Array(OTP_LENGTH).fill(""));
           },
           onSuccess: (data) => {
-            console.log(data);
+            console.log("TOKEN:", data);
 
             localStorage.setItem("accessToken", data);
+
+            console.log("STORED:", localStorage.getItem("accessToken"));
+
             navigate("/");
           },
         },
