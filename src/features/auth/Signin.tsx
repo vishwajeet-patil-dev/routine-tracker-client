@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useRequestOtp, useVerifyOtp } from "./hooks";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 const OTP_LENGTH = 6;
 
@@ -9,7 +9,7 @@ function Signin() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState<string[]>(() => Array(OTP_LENGTH).fill(""));
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const requestMutation = useRequestOtp();
   const verifyMutation = useVerifyOtp();
