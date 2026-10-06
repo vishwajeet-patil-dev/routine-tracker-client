@@ -10,7 +10,10 @@ export class ApiError extends Error {
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${BASE_URL}${path}`, options);
+  const response = await fetch(`${BASE_URL}${path}`, {
+    ...options,
+    credentials: "include",
+  });
   if (!response.ok) {
     const body = await response.json().catch(() => null);
     throw new ApiError(
