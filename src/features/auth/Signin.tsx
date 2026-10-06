@@ -25,7 +25,10 @@ function Signin() {
             console.error("Error verifying OTP:", error);
             setOtp(Array(OTP_LENGTH).fill(""));
           },
-          onSuccess: () => navigate("/"),
+          onSuccess: (data) => {
+            localStorage.setItem("accessToken", data);
+            navigate("/");
+          },
         },
       );
     }

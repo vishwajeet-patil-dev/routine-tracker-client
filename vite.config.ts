@@ -5,6 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    proxy: { "/api": "http://localhost:3999" },
+    proxy: { "/api": "routine-tracker-server.onrender.com" },
   },
 });

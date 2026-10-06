@@ -12,7 +12,10 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(`${BASE_URL}${path}`, {
     ...options,
-    credentials: "include",
+    headers: {
+      ...options?.headers,
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
   });
   if (!response.ok) {
     const body = await response.json().catch(() => null);
