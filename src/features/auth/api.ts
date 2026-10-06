@@ -9,13 +9,13 @@ export async function getProfile(): Promise<User> {
 export async function requestOtp(input: RequestOtpInput): Promise<void> {
   await api.post<{ message: string }>("/request-otp", input);
 }
-export async function verifyOtp(input: VerifyOtpInput): Promise<string> {
+export async function verifyOtp(input: VerifyOtpInput): Promise<void> {
   const { data } = await api.post<{
     message: string;
     data: {
       accessToken: string;
     };
   }>("/verify-otp", input);
-
-  return data.accessToken;
+  console.log("the data is", data);
+  localStorage.setItem("accessToken", data.accessToken);
 }
